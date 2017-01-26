@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <center>
+    <h1>Polls</h1>
+  </center>
+  <% @polls.each do |poll| %>
+    <div class="row top10">
+      <!-- TODO: fix for different screen sizes-->
+      <div class="col-xs-9 col-xs-offset-0
+                  col-sm-8 col-sm-offset-1 
+                  col-md-7 col-md-offset-2 
+                  col-lg-4 col-lg-offset-4">
+      <!-- TODO: click doesn't work on phones. note that teachers won't be using phones much -->
+        <% button_text = "Poll " + poll.id.to_s + ": \"" + poll.name.to_s + "\"" %>
+        <%= link_to button_text, poll, class: "btn btn-block button-color btn-lg padded-md" %>
+        <%= link_to 'Edit', edit_poll_path(poll), class: "btn btn-info btn-lg padded-md"%>
+        <%= link_to 'Destroy', poll, class: "btn btn-danger btn-lg padded-md", method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Poll', new_poll_path %>

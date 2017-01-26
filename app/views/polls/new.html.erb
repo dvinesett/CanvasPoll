@@ -1,0 +1,69 @@
+<center><h1>New Poll</h1></center>
+
+<!--<form method="post" action="/polls">-->
+<%= form_for(@poll) do |f| %>
+    <div id="Quiz" class="container">
+        <label for= "QuizTitle">Quiz Title</label>
+        <input type="text" class="form-control" id="QuizTitle" name="quiz_title">
+        
+        <div id="questions">
+            <div class="row">
+                <div class="col-xs-9" id="question1">
+                    <label for="q1">Question 1</label>
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="q1" name="q1">
+                        </div>
+                        <div class="col-xs-1" >
+                            <a class="btn btn-danger" onclick="removeQuestion(this.parentElement.parentElement.parentElement)">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id=question1answers style="border: 4px solid white" >
+                        <div class="row" style="border: 4px solid white">
+                            <div class="col-xs-1" id="q1radio" align="right">
+                                <input type="radio" name="q1r" value="1">
+                            </div>
+                            
+                            <div class="col-xs-6" id="q1a1">
+                                <!--<label for="answer1">Answer 1</label>-->
+                                <input type="text" class="form-control" id="answer1" name="q1a1">
+                            </div>
+                            
+                            <div class="col-xs-2">
+                                <!-- don't let users remove first answer -->
+                                <!--
+                                <a class="btn btn-danger" onclick="removeAnswer(this.parentElement.parentElement)">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <a class="btn button-color col-xs-offset-1" onclick="addAnswer(this.parentElement.parentElement)">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Add new answer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br></br>
+        <a class="btn btn-primary" value="Add" id="poll-submit" onclick="addQuestion(this.parentElement)">
+            <span class="glyphicon glyphicon-plus"></span>
+            Add new question
+        </a>
+    </div>
+    <center>
+        <div style="border: 8px solid white"> 
+            <input class="btn button-color btn-lg" type="submit"/>
+        </div>
+    </center>
+<% end %>
+<!--</form>-->
+
+<%= link_to 'Back', polls_path %>

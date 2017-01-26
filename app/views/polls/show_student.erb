@@ -1,0 +1,28 @@
+<!-- TODO make view better for phones. bigger radio button clickables-->
+<div id="quiz" class="container">
+    <form method='post' action='/user_answers'>
+        <div id="questions">
+            <% @poll.questions.each do |question| %>
+                <div class="row top10">
+                <%= question.text %>
+                <% question.answers.each do |answer| %>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" 
+                                   name="question_<%= question.id %>" 
+                                   id="question<%= question.id %>answer<%= answer.id %>"
+                                   value="<%= answer.id %>">
+                            <%= answer.text %>
+                        </label>
+                    </div>
+                <% end %>
+                </div>
+            <% end %>
+        </div>
+        
+        <input type="submit" 
+               name="commit" 
+               value="Submit Poll"
+               class="btn btn-lg button-color">
+    </form>
+</div>

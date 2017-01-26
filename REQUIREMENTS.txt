@@ -1,0 +1,22 @@
+DEMO:
+[] student view
+    [DONE] verify student/teacher in controller
+    [] add student index.html
+    [] add /polls/1/student
+[] vote action adds vote to answer in database
+[] grade passback
+[] git push to our bitbucket
+[] /polls/1/edit
+
+
+TODO:
+- remove unneccessary
+    - methods
+    - files
+    - gems
+- do teacher/student permissions with routes scopes/namespaces
+- course_id without parsing params. use api call instead
+- refactor /polls/new with "accepts_nested_attributes_for" in model
+    http://railscasts.com/episodes/196-nested-model-form-part-1
+- teacher poll view automatically update
+    http://railscasts.com/episodes/229-polling-for-changes?view=asciicast

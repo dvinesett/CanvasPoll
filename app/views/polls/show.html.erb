@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<div id="Quiz" class="container">
+    <!--TODO add button the show answers. hide them by default-->
+    <center><h1>
+        <%= link_to @poll.name, @poll %>
+    </h1></center>
+    <div id="questions">
+        <% @poll.questions.each do |question| %>
+            <table id="q<%= question.id %>" class="table">
+                <tr>
+                    <th colspan="4"><%= question.text %></th>
+                </tr>
+                <tr>
+                    <th class="col-xs-1 col-sm-1">Number</th>
+                    <th class="col-xs-1 col-sm-1">Correct</th>
+                    <th class="col-xs-1 col-sm-1"># Votes</th>
+                    <th class="col-xs-9 col-sm-9">Answer</th>
+                </tr>
+                <% first_answer_id = question.answers.first.id %>
+                <% question.answers.each do |answer| %>
+                    <tr id="<%= "q" + question.id.to_s + "a" + answer.id.to_s %>">
+                        <td id="<%= "q" + question.id.to_s + "a" + answer.id.to_s + "Number"%>">
+                            <%= answer.id - (first_answer_id-1) %>
+                        </td>
+                        <td id="<%= "q" + question.id.to_s + "a" + answer.id.to_s + "weight" %>">
+                            <% if answer.correct? then %>
+                                <span class='glyphicon glyphicon-ok'></span>
+                            <% end %>
+                        </td>
+                        <td id="<%= "q" + question.id.to_s + "a" + answer.id.to_s + "votes"%>">
+                            <%= answer.votes %>
+                        </td>
+                        <td id="<%= "q" + question.id.to_s + "a" + answer.id.to_s + "text"%>">
+                            <%= answer.text %>
+                        </td>
+                    </tr>
+                <% end %>
+            </table>
+            <br/>
+        <% end %>
+    </div>
+</div>
+
+<%= link_to 'Edit', edit_poll_path(@poll) %> |
+<%= link_to 'Back', polls_path %>
